@@ -1,0 +1,111 @@
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #0a0a0a;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== Slide Wrappers (each div holding an img) ===== */
+body>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeSlide 12s infinite;
+}
+
+/* Stagger each slide — 3 slides, 4s each, total cycle = 12s */
+body>div:nth-of-type(1) {
+    animation-delay: 0s;
+}
+
+body>div:nth-of-type(2) {
+    animation-delay: 4s;
+}
+
+body>div:nth-of-type(3) {
+    animation-delay: 8s;
+}
+
+/* ===== Image Sizing ===== */
+body>div>img {
+    max-width: 85%;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== Slider Buttons ===== */
+.slider-btn {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 28px;
+    padding: 14px 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s, transform 0.3s;
+    user-select: none;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-btn.prev {
+    left: 20px;
+}
+
+.slider-btn.next {
+    right: 20px;
+}
+
+/* ===== Fade Animation ===== */
+@keyframes fadeSlide {
+    0% {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    5% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    28% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    33% {
+        opacity: 0;
+        transform: scale(1.03);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
